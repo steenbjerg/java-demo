@@ -55,7 +55,7 @@ jobs:
         java --version
         native-image --version
     - name: Build native client
-      run: ./gradlew -s build nativeCompile nativeLink
+      run: ./gradlew -s build nativeCompile
       env:
         GRAALVM_HOME: ${{ env.JAVA_HOME }}
     - name: See build output folders
