@@ -71,7 +71,7 @@ graalvmNative {
         // options to configure the main binary
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
-        buildArgs.add('-O3') // enables additional compiler optimizations
+        // buildArgs.add('-O3') // enables additional compiler optimizations
     }
 
 	agent {
