@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/mianifest.mf\\E"
+      },
+      {
+        "pattern": "\\Qtest/data.json\\E"
+      },
+      {
+        "pattern": "\\Qlogback.xml\\E"
+      }
+    ],
+    "excludes": []
+  },
+  "bundles": []
+}
