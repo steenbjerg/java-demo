@@ -42,7 +42,7 @@ jobs:
     - uses: graalvm/setup-graalvm@v1.4.1
       with:
         distribution: 'liberica'
-        java-version: '24+37'
+        java-version: '24.0.2'
         java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
