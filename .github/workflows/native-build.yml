@@ -38,11 +38,11 @@ jobs:
 
     - name: check if musl based
       run: ldd --version
-      
+
     - uses: graalvm/setup-graalvm@v1.4.1
       with:
         distribution: 'liberica'
-        java-version: '25'
+        java-version: '25.0.0+37'
         java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
