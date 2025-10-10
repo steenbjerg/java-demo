@@ -7,7 +7,13 @@ Build tool is gradle.
 ## BellSoft Liberica Setup
 Download Liberica from https://bell-sw.com/pages/downloads/
 
-Setup environment variables:
+Setup environment variables for jdk 21:
+
+```{script}
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21
+export PATH=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21/bin
+```
+or this for jdk 24:
 
 ```{script}
 export JAVA_HOME=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24
@@ -27,7 +33,7 @@ Run this to collect information about classes accessed via reflections and resou
 Do this for creating the necessary metadata files:
 
 ```{script}
-./gradlew -Pagent run
+./gradlew -Pagent=standard run
 ./gradlew metadataCopy
 ```
 
