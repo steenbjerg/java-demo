@@ -1,14 +1,13 @@
 plugins {
   id 'application'
 //   id 'org.openjfx.javafxplugin' version '0.1.0'
-  id 'org.graalvm.buildtools.native' version '0.11.0'
+  id 'org.graalvm.buildtools.native' version '0.11.1'
 }
 
 ext {
 	libraryVersions = [
 		slf4j: "2.0.13",
 		logback: "1.5.6",
-        yasson: "3.0.3",
 	]
 }
 
@@ -16,19 +15,19 @@ repositories {
 	mavenCentral()
 }
 
-sourceSets {
-	main {
-		java {
-			srcDir "src/main/gen-src-wizard"
-		}
-	}
-}
+// sourceSets {
+// 	main {
+// 		java {
+// 			srcDir "src/main/gen-src-wizard"
+// 		}
+// 	}
+// }
 
-// group "dk.stonemountain.demo"
+group "dk.stonemountain.demo"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_24
-    targetCompatibility = JavaVersion.VERSION_24
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 // javafx {
@@ -40,11 +39,11 @@ application {
     mainClass.set('dk.stonemountain.demo.java.Main')
 }
 
-jar {	
-    manifest {
-        attributes 'Main-Class': 'dk.stonemountain.demo.java.Main'
-    }
-}
+// jar {	
+//     manifest {
+//         attributes 'Main-Class': 'dk.stonemountain.demo.java.Main'
+//     }
+// }
 
 dependencies {
 	implementation "org.slf4j:slf4j-api:${libraryVersions.slf4j}"
@@ -52,8 +51,6 @@ dependencies {
 	implementation "ch.qos.logback:logback-core:${libraryVersions.logback}"
 	implementation "ch.qos.logback:logback-classic:${libraryVersions.logback}"
 
-	implementation "org.eclipse:yasson:${libraryVersions.yasson}"
-	
 	// implementation "org.openjfx:javafx-base:{javafx.version}"
 	// implementation "org.openjfx:javafx-controls:{javafx.version}"
 	// implementation "org.openjfx:javafx-fxml:{javafx.version}"
@@ -61,21 +58,24 @@ dependencies {
 
 graalvmNative {
     binaries.all {
-        // common options
 		resources.autodetect()
-		buildArgs.add("-Djava.awt.headless=false")
         verbose = true
     }
 
     binaries.main {
-        // options to configure the main binary
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
-        // buildArgs.add('-O3') // enables additional compiler optimizations
     }
 
 	agent {
 		enabled = true
+		defaultMode = "standard"
+
+		modes {
+			standard {
+			}
+		}
+		
 		metadataCopy {
 			inputTaskNames.add("run")
 			outputDirectories.add("src/main/resources/META-INF/native-image")
