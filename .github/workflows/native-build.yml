@@ -42,7 +42,7 @@ jobs:
     - uses: graalvm/setup-graalvm@v1.4.1
       with:
         distribution: 'liberica'
-        java-version: '25.0.0'
+        java-version: 'latest'
         java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
@@ -62,8 +62,6 @@ jobs:
 
     - name: Build native client
       run: ./gradlew -s nativeCompile
-      env:
-        GRAALVM_HOME: ${{ env.JAVA_HOME }}
 
     - name: See build output folders
       run: ls -l build
