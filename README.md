@@ -23,8 +23,8 @@ export PATH=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24/bin:$PATH
 or this for jdk 25:
 
 ```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.0-openjdk25
-export PATH=/opt/bellsoft/liberica-vm-full-25.0.0-openjdk25/bin:$PATH
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.1-openjdk25
+export PATH=/opt/bellsoft/liberica-vm-full-25.0.1-openjdk25/bin:$PATH
 ```
 
 In order to compile native you must install the following packages:

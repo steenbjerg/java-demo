@@ -608,6 +608,13 @@
     },
     {
       "type": "com.sun.glass.ui.gtk.GtkView",
+      "allDeclaredFields": true,
+      "allPublicFields": true,
+      "allDeclaredMethods": true,
+      "allPublicMethods": true,
+      "allDeclaredConstructors": true,
+      "allPublicConstructors": true,
+      "unsafeAllocated": true,
       "jniAccessible": true,
       "methods": [
         {
@@ -796,6 +803,24 @@
         },
         {
           "name": "width"
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.freetype.FT_Matrix",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "xx"
+        },
+        {
+          "name": "xy"
+        },
+        {
+          "name": "yx"
+        },
+        {
+          "name": "yy"
         }
       ]
     },
