@@ -63,12 +63,6 @@ jobs:
     - name: Build native client
       run: ./gradlew -s nativeCompile
 
-    - name: See build output folders
-      run: ls -l build
-
-    - name: See build native output folders
-      run: ls -l build/native
-
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
   
