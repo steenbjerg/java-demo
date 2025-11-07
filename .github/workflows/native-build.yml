@@ -39,7 +39,7 @@ jobs:
     - name: check if musl based
       run: ldd --version
 
-    - uses: graalvm/setup-graalvm@v1.4.1
+    - uses: graalvm/setup-graalvm@v1.4.2
       with:
         distribution: 'liberica'
         java-version: '25'
@@ -59,6 +59,7 @@ jobs:
         echo "JAVA_HOME: $JAVA_HOME"
         java --version
         native-image --version
+        ./gradlew --version
 
     - name: Build native client
       run: ./gradlew -s nativeCompile
