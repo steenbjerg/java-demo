@@ -16,12 +16,12 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         include:
-          - os: ubuntu-latest
-            architecture: x86_64-linux
-            executeable-extension: 
-          # - os: windows-latest          
-          #   architecture: x86_64-windows
-          #   executeable-extension: .exe
+          # - os: ubuntu-latest
+          #   architecture: x86_64-linux
+          #   executeable-extension: 
+          - os: windows-latest          
+            architecture: x86_64-windows
+            executeable-extension: .exe
           # - os: macos-latest
           #   architecture: aarch64-darwin
           #   executeable-extension: 
