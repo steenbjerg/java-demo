@@ -1,13 +1,13 @@
 package dk.stonemountain.demo.java;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Main {
-	private static Logger LOG = LoggerFactory.getLogger(Main.class);
-	
+public class Main {	
+	private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
 	public static void main(String[] args) {
-		LOG.info("Starting up: command = {}, command line = {}", ProcessHandle.current().info().command(), ProcessHandle.current().info().commandLine());
+		LOG.log(Level.INFO, "Starting up: command = {0}, command line = {1}", new Object[] { ProcessHandle.current().info().command(), ProcessHandle.current().info().commandLine() });
 		HelloWorld.main(new String[0]);
 	}
 }

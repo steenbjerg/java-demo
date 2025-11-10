@@ -1,7 +1,7 @@
 package dk.stonemountain.demo.java;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
  
 public class HelloWorld extends Application {
-    private static Logger LOG = LoggerFactory.getLogger(HelloWorld.class);
+    private static Logger LOG = Logger.getLogger(HelloWorld.class.getName());
     
     public static void main(String[] args) {
         launch(args);
@@ -26,8 +26,7 @@ public class HelloWorld extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LOG.info("button clicked");
-                System.out.println("Hello World!");
+                LOG.log(Level.INFO,"button clicked");
             }
         });
         
