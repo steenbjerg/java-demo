@@ -14,14 +14,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2022, macos-latest]
+        os: [macos-latest]
         include:
           # - os: ubuntu-latest
           #   architecture: x86_64-linux
           #   executeable-extension: 
-          - os: windows-2022          
-            architecture: x86_64-windows
-            executeable-extension: .exe
+          # - os: windows-2022          
+          #   architecture: x86_64-windows
+          #   executeable-extension: .exe
           - os: macos-latest
             architecture: aarch64-darwin
             executeable-extension: 
