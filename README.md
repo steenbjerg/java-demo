@@ -10,8 +10,8 @@ Download Liberica from https://bell-sw.com/pages/downloads/
 Setup environment variables for jdk 21:
 
 ```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21
-export PATH=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21/bin:$PATH
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21
+export PATH=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21/bin:$PATH
 ```
 or this for jdk 24:
 
