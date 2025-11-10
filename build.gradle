@@ -27,6 +27,7 @@ graalvmNative {
     binaries.main {
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
+		configurationFileDirectories.from(file('src/main/resources/META-INF/native-image'))
     }
 
 	agent {

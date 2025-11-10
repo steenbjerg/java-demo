@@ -14,17 +14,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [ubuntu-latest]
         include:
-          # - os: ubuntu-latest
-          #   architecture: x86_64-linux
-          #   executeable-extension: 
+          - os: ubuntu-latest
+            architecture: x86_64-linux
+            executeable-extension: 
           # - os: windows-2022          
           #   architecture: x86_64-windows
           #   executeable-extension: .exe
-          - os: macos-latest
-            architecture: aarch64-darwin
-            executeable-extension: 
+          # - os: macos-latest
+          #   architecture: aarch64-darwin
+          #   executeable-extension: 
           # - os: macos-13
           #   architecture: x86_64-darwin
           #   executeable-extension: 
@@ -52,12 +52,12 @@ jobs:
       run: |
           sudo apt update
           sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
-    - if: matrix.os == 'windows-2022'
-      name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v2
-    - if: matrix.os == 'windows-2022'
-      name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v2.1
+    # - if: matrix.os == 'windows-2022'
+    #   name: Add msbuild to PATH
+    #   uses: microsoft/setup-msbuild@v2
+    # - if: matrix.os == 'windows-2022'
+    #   name: Visual Studio shell
+    #   uses: egor-tensin/vs-shell@v2.1
 
     - name: Printing GRAALVM Versions
       run: |
