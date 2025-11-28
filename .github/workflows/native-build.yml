@@ -26,13 +26,15 @@ jobs:
             architecture: aarch64-darwin
             executeable-extension: 
     steps:
-    - name: Get OS info
+    - if: matrix.os == 'ubuntu-latest'
+      name: Get OS info
       run: uname -a
 
     - uses: actions/checkout@v4.1.2
       name: Checkout the repository
 
-    - name: check if musl based
+    - if: matrix.os == 'ubuntu-latest'
+      name: check if musl based
       run: ldd --version
 
     - uses: graalvm/setup-graalvm@v1.4.2
