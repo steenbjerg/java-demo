@@ -41,9 +41,9 @@ graalvmNative {
     binaries.main {
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
-		buildArgs.addAll([
-            "--gc=G1"
-        ])
+		// buildArgs.addAll([
+        //     "--gc=G1"
+        // ])
     }
 
 	agent {
