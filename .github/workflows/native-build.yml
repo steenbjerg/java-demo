@@ -2,7 +2,7 @@ name: NativeBuild
 
 on:
   push:
-    branches: [ main, jdk25 ]
+    branches: [ main, jdk25, fxml ]
     tags:
       - '*'
 
