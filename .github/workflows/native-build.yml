@@ -72,6 +72,8 @@ jobs:
         type gradle.properties
         echo "org.gradle.jvmargs=-Djava.io.tmpdir=D:/Temp" >> gradle.properties
         type gradle.properties
+        mkdir D:/Temp
+        ls D:/
 
     - name: Build native client
       run: ./gradlew -s nativeCompile
