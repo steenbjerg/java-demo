@@ -65,6 +65,14 @@ jobs:
         native-image --version
         ./gradlew --version
 
+    - if: matrix.os == 'windows-latest'
+      name: Print some project info
+      run: |
+        echo "Current working directory: $pwd"
+        type gradle.properties
+        echo "org.gradle.jvmargs=-Djava.io.tmpdir=D:/Temp" >> gradle.properties
+        type gradle.properties
+
     - name: Build native client
       run: ./gradlew -s nativeCompile
 
