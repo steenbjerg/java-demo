@@ -14,7 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        # os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [macos-latest]
         include:
           - os: ubuntu-latest
             architecture: x86_64-linux
@@ -45,11 +46,17 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
 
+    - if: matrix.os == 'macos-latest'
+      name: Install xcode
+      run: |
+        xcode-select --install
+
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
       run: |
           sudo apt update
           sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+
     - if: matrix.os == 'windows-latest'
       name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2.0.0
@@ -66,14 +73,14 @@ jobs:
         ./gradlew --version
 
     - if: matrix.os == 'windows-latest'
-      name: Print some project info
+      name: Temporarily fix gradle tmpdir
       run: |
         echo "Current working directory: $pwd"
         type gradle.properties
         echo "org.gradle.jvmargs=-Djava.io.tmpdir=D:/Temp" >> gradle.properties
         type gradle.properties
         mkdir D:/Temp
-        ls D:/
+        ls D:/Temp
 
     - name: Build native client
       run: ./gradlew -s nativeCompile
