@@ -15,16 +15,16 @@ jobs:
     strategy:
       matrix:
         # os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [macos-latest]
+        os: [macos-13]
         include:
-          - os: ubuntu-latest
-            architecture: x86_64-linux
-            executeable-extension: 
-          - os: windows-latest 
-            architecture: x86_64-windows
-            executeable-extension: .exe
+          # - os: ubuntu-latest
+          #   architecture: x86_64-linux
+          #   executeable-extension: 
+          # - os: windows-latest 
+          #   architecture: x86_64-windows
+          #   executeable-extension: .exe
           - os: macos-latest
-            architecture: aarcegor-tensin/vs-shellh64-darwin
+            architecture: x86_64-darwin
             executeable-extension: 
     steps:
     - if: matrix.os == 'ubuntu-latest'
@@ -46,10 +46,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
 
-    - if: matrix.os == 'macos-latest'
-      name: Install xcode
-      run: |
-        xcode-select --install
+    # - if: matrix.os == 'macos-13'
+    #   name: Install xcode
+    #   run: |
+    #     xcode-select --install
 
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
