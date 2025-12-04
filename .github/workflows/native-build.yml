@@ -23,7 +23,7 @@ jobs:
           # - os: windows-latest 
           #   architecture: x86_64-windows
           #   executeable-extension: .exe
-          - os: macos-latest
+          - os: macos-15-intel
             architecture: x86_64-darwin
             executeable-extension: 
     steps:
@@ -46,7 +46,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
 
-    # - if: matrix.os == 'macos-13'
+    # - if: matrix.os == 'macos-15-intel'
     #   name: Install xcode
     #   run: |
     #     xcode-select --install

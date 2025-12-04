@@ -42,7 +42,7 @@ graalvmNative {
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
 		buildArgs.addAll([
-            "-J-Xmx8G"
+            "-J-Xmx12G"
         ])
     }
 
