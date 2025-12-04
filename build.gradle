@@ -41,9 +41,9 @@ graalvmNative {
     binaries.main {
         imageName = 'java-demo'
         mainClass = 'dk.stonemountain.demo.java.Main'
-		buildArgs.addAll([
-            "-J-Xmx12G"
-        ])
+		// buildArgs.addAll([
+        //     "-J-Xmx12G"
+        // ])
     }
 
 	agent {
