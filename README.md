@@ -10,8 +10,8 @@ Download Liberica from https://bell-sw.com/pages/downloads/
 Setup environment variables for jdk 21:
 
 ```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21
-export PATH=/opt/bellsoft/liberica-vm-full-23.1.8-openjdk21/bin:$PATH
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21
+export PATH=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21/bin:$PATH
 ```
 or this for jdk 24:
 
@@ -57,6 +57,14 @@ or commit an the github actions will do it for you.
 This branch uses jdk25 but the native compilation fails with this jdk. See actions output for details.
 
 The short summary is that it can setup-graalvm can not find the jdk25 to install in Ubuntu. It seems like the installation asset is not named correctly. It should find this https://github.com/bell-sw/LibericaNIK/releases/download/jdk-25.0.0%2B37/bellsoft-liberica-vm-full-openjdk25+37-25.0.0+1-linux-amd64.tar.gz in tag jdk-25.0.0+37 (see https://github.com/bell-sw/LibericaNIK/releases?q=jdk-25&expanded=true). The tag is named 25.0.0+37 but the version number in the installation asset is 25-37-25.0.0+1 which will not be found.
+
+
+## Problems with Windows build in Github actions 
+
+See https://github.com/graalvm/native-build-tools/issues/754
+Temporarily fixed by adding this to gradle.properties:
+
+org.gradle.jvmargs=-Djava.io.tmpdir=D:/Temp
 
 ## Contact
 
