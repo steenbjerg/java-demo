@@ -1,6 +1,5 @@
 package dk.stonemountain.demo.java;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
@@ -26,7 +25,7 @@ public class HelloWorld extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LOG.log(Level.INFO,"button clicked");
+                LOG.info("button clicked");
             }
         });
         
