@@ -1,5 +1,8 @@
 package dk.stonemountain.demo.java;
 
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ApplicationController {
+    private static final Logger LOG = Logger.getLogger(ApplicationController.class.getName());
+    
     @FXML private TableView<Car> carTable;
     @FXML private TableColumn<Car, String> brandColumn;
     @FXML private TableColumn<Car, String> nameColumn;
@@ -44,6 +49,10 @@ public class ApplicationController {
         carTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             editableCar.update(newSelection);
         });
+
+        doAddRows();
+
+        carTable.getSelectionModel().select(0);
     }
 
     @FXML
@@ -83,5 +92,30 @@ public class ApplicationController {
     private void doSave() {
         Car car = carTable.getSelectionModel().getSelectedItem(); 
         car.update(editableCar);
+    }
+
+    public void handleCommand(Optional<Command> command) {
+        if (command.isEmpty()) {
+            return;
+        }
+
+        switch (command.orElse(null)) {
+            case ViewCommand viewCommand -> {
+                // find car of brand and name
+                var car = carList.stream()
+                    .filter(c -> c.getBrand().equals(viewCommand.brand().orElse("unknown")) && c.getName().equals(viewCommand.name().orElse("unknown")))
+                    .findFirst();
+                LOG.info(() -> String.format("Search for %s, Found car: %s", viewCommand, car));
+                if (car.isPresent()) {
+                    carTable.getSelectionModel().select(car.get());
+                }
+            } 
+            case null -> {
+                LOG.warning(() -> String.format("Null command: %s", command.get()));
+            }
+            default -> {
+                LOG.warning(() -> String.format("Unknown command: %s", command.get()));
+            }
+        }
     }
 }

@@ -1,18 +1,19 @@
 package dk.stonemountain.demo.java;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 
-public class Main {
-    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
-    
-    public static void main(String[] args) {
-        LOG.info("Starting up: command = {}, command line = {}", 
-                ProcessHandle.current().info().command(), 
-                ProcessHandle.current().info().commandLine().orElse(""));
-        
-        // Launch the JavaFX application
+public class Main {	
+	private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
+	public static void main(String[] args) {
+		LOG.info(() -> String.format("Arguments: %s", List.of(args)));
+		LOG.info(() -> String.format("Starting up: command = %s, command line = %s", ProcessHandle.current().info().command(), ProcessHandle.current().info().commandLine()));
+
+		// Launch the JavaFX application
         Application.launch(JavaFXApplication.class, args);
-    }
+	}
 }
