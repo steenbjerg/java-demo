@@ -11,6 +11,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 
 public class ApplicationController {
@@ -92,6 +94,23 @@ public class ApplicationController {
     private void doSave() {
         Car car = carTable.getSelectionModel().getSelectedItem(); 
         car.update(editableCar);
+    }
+
+    @FXML
+    public void doShareLink() {
+        LOG.info(() -> "Share link");
+        Car car = carTable.getSelectionModel().getSelectedItem();
+        if (car == null) {
+            return;
+        }
+        
+        var url = String.format("fs-java-demo://view?brand=%s&name=%s", car.getBrand(), car.getName());
+        LOG.info(() -> String.format("Share link: %s", url));
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(url);
+        clipboard.setContent(content);
+        LOG.info(() -> String.format("Shared link: %s", url));
     }
 
     public void handleCommand(Optional<Command> command) {

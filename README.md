@@ -17,8 +17,8 @@ export PATH=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21/bin:$PATH
 or this for jdk 25:
 
 ```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.1-openjdk25
-export PATH=/opt/bellsoft/liberica-vm-full-25.0.1-openjdk25/bin:$PATH
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.2-openjdk25
+export PATH=/opt/bellsoft/liberica-vm-full-25.0.2-openjdk25/bin:$PATH
 ```
 
 In order to compile native you must install the following packages:
@@ -64,6 +64,8 @@ You can start the application and select a car by using a mime type. For example
 If you install src/main/os/debian/java-demo.desktop on your linux os then it is possible to activate the application from a html page like src/main/os/debian/test.html.
 
 You can also test the mime registration inside the desktop file by running:
+
+sudo update-desktop-database /usr/share/applications/
 
 ```{script}
 xdg-open fs-java-demo://view?brand=Ford&name=Mustang

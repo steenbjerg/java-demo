@@ -58,10 +58,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <HBox maxWidth="1.7976931348623157E308">
+                  <HBox maxWidth="1.7976931348623157E308" spacing="5.0">
                      <children>
                         <Pane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                       <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doAddRows" text="Add Rows" />
+                        <Button mnemonicParsing="false" onAction="#doShareLink" text="Share Link" />
                         <Pane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                      </children>
                      <padding>
