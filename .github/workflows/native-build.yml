@@ -94,21 +94,17 @@ jobs:
     - name: Build native client
       run: ./gradlew -s nativeCompile
 
-    - name: check for libawt in build folders
-      run: |
-        find $GRAALVM_HOME -name "libawt*"
-
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
 
     - if: matrix.os == 'ubuntu-latest'
       name: check for libawt in folders
       run: |
-        find $GRAALVM_HOME -name "libawt*"
+        find build/ -name "libawt*"
     - if: matrix.os == 'macos-latest'
       name: check for libawt in folders
       run: |
-        find $GRAALVM_HOME -name "libawt*"
+        find build/ -name "libawt*"
       
     - name: Make dist directory
       run: mkdir dist
