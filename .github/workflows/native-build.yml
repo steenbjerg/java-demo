@@ -72,6 +72,10 @@ jobs:
         native-image --version
         ./gradlew --version
 
+    - name: check for libawt in java installation folders
+      run: |
+        find $GRAALVM_HOME -name "libawt*"
+
     - if: matrix.os == 'windows-latest'
       name: Temporarily fix gradle tmpdir
       run: |
@@ -85,9 +89,17 @@ jobs:
     - name: Build native client
       run: ./gradlew -s nativeCompile
 
+    - name: check for libawt in build folders
+      run: |
+        find $GRAALVM_HOME -name "libawt*"
+
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
-  
+
+    - name: check for libawt in folders
+      run: |
+        find $GRAALVM_HOME -name "libawt*"
+      
     - name: Make dist directory
       run: mkdir dist
 
