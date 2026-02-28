@@ -41,7 +41,7 @@ jobs:
     - uses: graalvm/setup-graalvm@v1.4.3
       with:
         distribution: 'liberica'
-        java-version: '25.0.1'
+        java-version: '25'
         java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: gradle
@@ -72,12 +72,8 @@ jobs:
         native-image --version
         ./gradlew --version
 
-    - if: matrix.os == 'ubuntu-latest'
-      name: check for libawt in java installation folders
-      run: |
-        find $GRAALVM_HOME -name "libawt*"
-    - if: matrix.os == 'macos-latest'
-      name: check for libawt in java installation folders
+    - if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+      name: check for libawt in java installation folder
       run: |
         find $GRAALVM_HOME -name "libawt*"
 
@@ -97,12 +93,8 @@ jobs:
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
 
-    - if: matrix.os == 'ubuntu-latest'
-      name: check for libawt in folders
-      run: |
-        find build/ -name "libawt*"
-    - if: matrix.os == 'macos-latest'
-      name: check for libawt in folders
+    - if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+      name: check for libawt in build folder
       run: |
         find build/ -name "libawt*"
       
