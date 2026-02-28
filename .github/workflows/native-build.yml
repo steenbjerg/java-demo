@@ -72,7 +72,12 @@ jobs:
         native-image --version
         ./gradlew --version
 
-    - name: check for libawt in java installation folders
+    - if: matrix.os == 'ubuntu-latest'
+      name: check for libawt in java installation folders
+      run: |
+        find $GRAALVM_HOME -name "libawt*"
+    - if: matrix.os == 'macos-latest'
+      name: check for libawt in java installation folders
       run: |
         find $GRAALVM_HOME -name "libawt*"
 
@@ -96,7 +101,12 @@ jobs:
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
 
-    - name: check for libawt in folders
+    - if: matrix.os == 'ubuntu-latest'
+      name: check for libawt in folders
+      run: |
+        find $GRAALVM_HOME -name "libawt*"
+    - if: matrix.os == 'macos-latest'
+      name: check for libawt in folders
       run: |
         find $GRAALVM_HOME -name "libawt*"
       
