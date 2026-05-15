@@ -7,18 +7,13 @@ Build tool is gradle.
 ## BellSoft Liberica Setup
 Download Liberica from https://bell-sw.com/pages/downloads/
 
-Setup environment variables for jdk 21:
-
-```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21
-export PATH=/opt/bellsoft/liberica-vm-full-23.1.9-openjdk21/bin:$PATH
-```
+setup up java with the script setup-java.sh (and source it) or manually:
 
 or this for jdk 25:
 
 ```{script}
-export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.2-openjdk25
-export PATH=/opt/bellsoft/liberica-vm-full-25.0.2-openjdk25/bin:$PATH
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.3-openjdk25
+export PATH=/opt/bellsoft/liberica-vm-full-25.0.3-openjdk25/bin:$PATH
 ```
 
 In order to compile native you must install the following packages:
